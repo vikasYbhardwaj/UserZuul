@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: USER-ZUUL
+server:
+  port: 8051
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+      instance:
+      #SShostname: localhost
+  
+zuul:
+    prefix: /api
+    routes:
+      user-DB-Server:
+         path: /server/**
+         url: http://user-DB-Server:8080
+         service-id: USER-DB-SERVER
+      user-client:
+         path: /client/**
+      service-id: USER-CLIENT
+      host:
+      connect-timeout-millis: 60000
+      socket-timeout-millis:  60000
+    
+         
+      
+      
+      
+            
+         
+    
+    
+    
+      
+     
+
